@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Tools - Vos outils PDF en ligne gratuits</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>PDF Tools</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#tools">Outils</a></li>
+                    <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Tous les outils PDF dont vous avez besoin</h1>
+            <p>Fusionnez, divisez, compressez, convertissez et modifiez vos fichiers PDF gratuitement en ligne</p>
+            <div class="upload-area" id="uploadArea">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Déposez votre fichier PDF ici</h3>
+                <p>ou cliquez pour sélectionner un fichier</p>
+                <input type="file" id="fileInput" accept=".pdf" multiple>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools" id="tools">
+        <div class="container">
+            <h2>Nos Outils PDF</h2>
+            <div class="tools-grid">
+                <!-- Fusionner PDF -->
+                <div class="tool-card" data-tool="merge">
+                    <div class="tool-icon">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <h3>Fusionner PDF</h3>
+                    <p>Combine plusieurs PDF en un seul document</p>
+                </div>
+
+                <!-- Diviser PDF -->
+                <div class="tool-card" data-tool="split">
+                    <div class="tool-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Diviser PDF</h3>
+                    <p>Sépare un PDF en plusieurs documents</p>
+                </div>
+
+                <!-- Compresser PDF -->
+                <div class="tool-card" data-tool="compress">
+                    <div class="tool-icon">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                    </div>
+                    <h3>Compresser PDF</h3>
+                    <p>Réduisez la taille de votre fichier PDF</p>
+                </div>
+
+                <!-- PDF en Word -->
+                <div class="tool-card" data-tool="pdf-to-word">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3>PDF en Word</h3>
+                    <p>Convertissez vos PDF en documents Word modifiables</p>
+                </div>
+
+                <!-- Word en PDF -->
+                <div class="tool-card" data-tool="word-to-pdf">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Word en PDF</h3>
+                    <p>Convertissez vos documents Word en PDF</p>
+                </div>
+
+                <!-- PDF en PowerPoint -->
+                <div class="tool-card" data-tool="pdf-to-ppt">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h3>PDF en PowerPoint</h3>
+                    <p>Transformez vos PDF en présentations PowerPoint</p>
+                </div>
+
+                <!-- PowerPoint en PDF -->
+                <div class="tool-card" data-tool="ppt-to-pdf">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h3>PowerPoint en PDF</h3>
+                    <p>Convertissez vos présentations en PDF</p>
+                </div>
+
+                <!-- PDF en Excel -->
+                <div class="tool-card" data-tool="pdf-to-excel">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>PDF en Excel</h3>
+                    <p>Extrayez des données de PDF vers Excel</p>
+                </div>
+
+                <!-- Excel en PDF -->
+                <div class="tool-card" data-tool="excel-to-pdf">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <h3>Excel en PDF</h3>
+                    <p>Convertissez vos feuilles Excel en PDF</p>
+                </div>
+
+                <!-- PDF en JPG -->
+                <div class="tool-card" data-tool="pdf-to-jpg">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>PDF en JPG</h3>
+                    <p>Extrayez des images de vos PDF ou convertissez-les en JPG</p>
+                </div>
+
+                <!-- JPG en PDF -->
+                <div class="tool-card" data-tool="jpg-to-pdf">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <h3>JPG en PDF</h3>
+                    <p>Convertissez vos images JPG en PDF</p>
+                </div>
+
+                <!-- Modifier PDF -->
+                <div class="tool-card" data-tool="edit">
+                    <div class="tool-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>Modifier PDF</h3>
+                    <p>Ajoutez du texte, des images et des annotations</p>
+                </div>
+
+                <!-- Signer PDF -->
+                <div class="tool-card" data-tool="sign">
+                    <div class="tool-icon">
+                        <i class="fas fa-signature"></i>
+                    </div>
+                    <h3>Signer PDF</h3>
+                    <p>Ajoutez une signature électronique à vos PDF</p>
+                </div>
+
+                <!-- Protéger PDF -->
+                <div class="tool-card" data-tool="protect">
+                    <div class="tool-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Protéger PDF</h3>
+                    <p>Chiffrez vos PDF avec un mot de passe</p>
+                </div>
+
+                <!-- Déverrouiller PDF -->
+                <div class="tool-card" data-tool="unlock">
+                    <div class="tool-icon">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <h3>Déverrouiller PDF</h3>
+                    <p>Supprimez la protection par mot de passe des PDF</p>
+                </div>
+
+                <!-- Rotation PDF -->
+                <div class="tool-card" data-tool="rotate">
+                    <div class="tool-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Rotation PDF</h3>
+                    <p>Pivotez les pages de votre PDF</p>
+                </div>
+
+                <!-- Numéros de page -->
+                <div class="tool-card" data-tool="page-numbers">
+                    <div class="tool-icon">
+                        <i class="fas fa-list-ol"></i>
+                    </div>
+                    <h3>Numéros de page</h3>
+                    <p>Ajoutez des numéros de page à vos PDF</p>
+                </div>
+
+                <!-- Réparer PDF -->
+                <div class="tool-card" data-tool="repair">
+                    <div class="tool-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Réparer PDF</h3>
+                    <p>Réparez les fichiers PDF corrompus</p>
+                </div>
+
+                <!-- Comparer PDF -->
+                <div class="tool-card" data-tool="compare">
+                    <div class="tool-icon">
+                        <i class="fas fa-columns"></i>
+                    </div>
+                    <h3>Comparer PDF</h3>
+                    <p>Comparez deux PDF et voyez les différences</p>
+                </div>
+
+                <!-- HTML en PDF -->
+                <div class="tool-card" data-tool="html-to-pdf">
+                    <div class="tool-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>HTML en PDF</h3>
+                    <p>Convertissez des pages HTML en PDF</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Pourquoi choisir PDF Tools ?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Rapide et efficace</h3>
+                    <p>Traitement rapide de vos fichiers PDF</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Sécurisé</h3>
+                    <p>Vos fichiers sont supprimés après traitement</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>En ligne</h3>
+                    <p>Aucune installation nécessaire, accessible partout</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-smile"></i>
+                    <h3>Gratuit</h3>
+                    <p>Utilisation gratuite sans limitation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>À propos de PDF Tools</h2>
+            <p>PDF Tools est une suite complète d'outils en ligne pour travailler avec vos fichiers PDF. Inspiré par les meilleurs services comme iLovePDF, nous offrons une solution gratuite, rapide et sécurisée pour tous vos besoins PDF.</p>
+            <p>Notre plateforme vous permet de fusionner, diviser, compresser, convertir et modifier vos PDF directement depuis votre navigateur, sans aucune installation logicielle.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Votre nom" required>
+                <input type="email" placeholder="Votre email" required>
+                <textarea placeholder="Votre message" rows="5" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 PDF Tools. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
