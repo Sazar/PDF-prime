@@ -64,7 +64,7 @@ PDF Tools est une plateforme web complète et gratuite inspirée par iLovePDF, p
 
 ## 🚀 État d'Avancement
 
-### ✅ Implémenté (Frontend)
+### ✅ Implémenté (Frontend & Backend)
 - [x] Structure HTML complète de la page d'accueil
 - [x] Styles CSS modernes et responsives
 - [x] JavaScript pour l'interaction utilisateur
@@ -74,12 +74,31 @@ PDF Tools est une plateforme web complète et gratuite inspirée par iLovePDF, p
 - [x] Formulaire de contact
 - [x] Navigation responsive
 - [x] 20+ cartes d'outils interactives
+- [x] Serveur Node.js/Express opérationnel
+- [x] API endpoints pour les opérations PDF principales
+- [x] Gestion des uploads avec Multer
+- [x] Traitement PDF avec pdf-lib
+- [x] Téléchargement automatique des fichiers traités
+- [x] Nettoyage automatique des fichiers temporaires
 
-### 🔄 En Cours de Développement
-- [ ] Backend pour le traitement des fichiers PDF
-- [ ] API endpoints pour chaque opération
-- [ ] Gestion sécurisée des uploads
-- [ ] Système de téléchargement des fichiers traités
+### 🔄 Outils PDF Fonctionnels (Backend)
+- [x] **Fusionner PDF** - Combiner plusieurs PDF en un seul
+- [x] **Diviser PDF** - Séparer un PDF en pages individuelles
+- [x] **Compresser PDF** - Réduire la taille des fichiers
+- [x] **Filigrane (Watermark)** - Ajouter un texte en filigrane
+- [x] **Protéger PDF** - Chiffrer avec mot de passe
+- [x] **Rotation PDF** - Pivoter les pages (90°, 180°, 270°)
+- [x] **Générer QR Code** - Créer un QR code vers un PDF
+
+### ⏳ En Développement
+- [ ] Conversion PDF ↔ Word/Excel/PowerPoint
+- [ ] Conversion PDF ↔ JPG
+- [ ] Éditeur PDF complet
+- [ ] Signature électronique
+- [ ] Déverrouillage PDF
+- [ ] Numérotation des pages
+- [ ] Réparation PDF
+- [ ] Comparaison PDF
 - [ ] Authentification utilisateur (optionnel)
 - [ ] Historique des traitements
 
@@ -99,33 +118,48 @@ PDF Tools est une plateforme web complète et gratuite inspirée par iLovePDF, p
 - **JavaScript (ES6+)** - Logique interactive
 - **Font Awesome** - Icônes vectorielles
 
-### Backend (À implémenter)
-Suggestions de technologies :
-- **Node.js** avec Express
-- **Python** avec Flask/Django
-- **PHP** avec Laravel/Symfony
+### Backend (Implémenté)
+- **Node.js** avec Express - Serveur web rapide et léger
+- **Multer** - Gestion des uploads de fichiers
+- **PDF-Lib** - Manipulation PDF complète
+- **QRCode** - Génération de codes QR
 
-### Bibliothèques PDF Recommandées
-- **PDF-Lib** (JavaScript) - Manipulation PDF côté client/serveur
-- **PyPDF2** / **pdf2image** (Python) - Traitement PDF
-- **PDFtk** - Outil en ligne de commande puissant
-- **Ghostscript** - Compression et conversion PDF
-- **LibreOffice** - Conversions de formats Office
+### Bibliothèques PDF Utilisées
+- **PDF-Lib** (JavaScript) - Manipulation PDF côté serveur
+- **Multer** - Gestion des fichiers uploadés
+- **Express** - Framework web Node.js
+- **QRCode** - Génération de QR codes
 
 ## 🔧 Installation & Utilisation
 
 ### Prérequis
+- Node.js (v14 ou supérieur)
+- npm ou yarn
 - Navigateur web moderne (Chrome, Firefox, Safari, Edge)
-- Serveur web (Apache, Nginx, ou serveur de développement)
 
-### Lancement Local
+### Installation Complète
 
-1. **Cloner le dépôt** (si applicable)
 ```bash
-cd /workspace
+# Cloner le repository
+git clone https://github.com/Sazar/PDF-prime.git
+cd PDF-prime
+
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement (avec auto-reload)
+npm run dev
+
+# Ou lancer en production
+npm start
 ```
 
-2. **Ouvrir avec un serveur local**
+Le serveur sera disponible sur : **http://localhost:3000**
+
+### Lancement Rapide (Frontend uniquement)
+
+Si vous souhaitez tester uniquement le frontend :
+
 ```bash
 # Avec Python
 python -m http.server 8000
@@ -137,10 +171,7 @@ npx serve .
 php -S localhost:8000
 ```
 
-3. **Accéder au site**
-```
-http://localhost:8000
-```
+Puis accédez à : `http://localhost:8000`
 
 ## 📖 Comment Utiliser
 
@@ -151,10 +182,11 @@ http://localhost:8000
 
 ## 🔐 Sécurité & Confidentialité
 
-- Les fichiers sont temporairement stockés pendant le traitement
-- Suppression automatique après traitement (à implémenter)
-- Pas de conservation des documents utilisateurs
-- Connexion HTTPS recommandée pour la production
+- ✅ Les fichiers sont temporairement stockés pendant le traitement
+- ✅ Suppression automatique après 1 heure (implémenté)
+- ✅ Pas de conservation des documents utilisateurs
+- ⚠️ Connexion HTTPS recommandée pour la production
+- ⚠️ Limite de taille : 50MB par fichier
 
 ## 🤝 Contribution
 

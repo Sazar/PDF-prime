@@ -38,6 +38,47 @@ document.addEventListener('DOMContentLoaded', function() {
 // Variables globales pour les fichiers sélectionnés
 let selectedFiles = [];
 let currentTool = null;
+const API_BASE_URL = ''; // Utiliser le même domaine que le frontend
+
+// Fonction pour envoyer des fichiers au backend
+async function sendFilesToBackend(endpoint, files, additionalData = {}) {
+    const formData = new FormData();
+    
+    // Ajouter les fichiers
+    if (Array.isArray(files)) {
+        files.forEach(file => formData.append('files', file));
+    } else {
+        formData.append('file', files);
+    }
+    
+    // Ajouter les données supplémentaires
+    Object.keys(additionalData).forEach(key => {
+        formData.append(key, additionalData[key]);
+    });
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/${endpoint}`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(result.error || 'Erreur lors du traitement');
+        }
+        
+        return result;
+    } catch (error) {
+        console.error('Erreur:', error);
+        throw error;
+    }
+}
+
+// Fonction pour télécharger un fichier traité
+function downloadFile(filename) {
+    window.location.href = `${API_BASE_URL}/download/${filename}`;
+}
 
 // Gestion du drag over
 function handleDragOver(e) {
@@ -195,7 +236,7 @@ function selectTool(toolType, cardElement) {
 }
 
 // Traiter les fichiers
-function processFiles() {
+async function processFiles() {
     if (selectedFiles.length === 0) {
         showNotification('Veuillez sélectionner au moins un fichier.', 'error');
         return;
@@ -206,17 +247,78 @@ function processFiles() {
         return;
     }
     
-    // Simulation du traitement
+    // Afficher le chargement
     showNotification('Traitement en cours...', 'info');
     
-    // Ici, vous intégrerez le backend pour traiter les fichiers
-    // Pour l'instant, c'est une simulation
-    setTimeout(() => {
-        showNotification('Fichiers traités avec succès ! Le téléchargement va commencer.', 'success');
+    try {
+        let endpoint = currentTool;
+        let additionalData = {};
         
-        // Simulation de téléchargement
-        simulateDownload();
-    }, 2000);
+        // Mapping des outils vers les endpoints API
+        const toolMapping = {
+            'merge': 'merge',
+            'split': 'split',
+            'compress': 'compress',
+            'watermark': 'watermark',
+            'protect': 'protect',
+            'rotate': 'rotate',
+            'qrcode': 'qrcode'
+        };
+        
+        endpoint = toolMapping[currentTool];
+        
+        if (!endpoint) {
+            showNotification('Outil non disponible pour le moment. Fonctionnalité en développement.', 'info');
+            simulateDownload();
+            return;
+        }
+        
+        // Données supplémentaires selon l'outil
+        if (currentTool === 'protect') {
+            const password = prompt('Entrez un mot de passe pour protéger le PDF:');
+            if (!password) {
+                showNotification('Mot de passe requis.', 'error');
+                return;
+            }
+            additionalData.password = password;
+        }
+        
+        if (currentTool === 'watermark') {
+            const text = prompt('Entrez le texte du filigrane (par défaut: CONFIDENTIEL):') || 'CONFIDENTIEL';
+            additionalData.text = text;
+        }
+        
+        if (currentTool === 'rotate') {
+            const degrees = prompt('Angle de rotation (90, 180, 270):', '90') || '90';
+            additionalData.degrees = degrees;
+        }
+        
+        // Appel au backend
+        const result = await sendFilesToBackend(endpoint, selectedFiles, additionalData);
+        
+        if (result.success) {
+            showNotification(result.message, 'success');
+            
+            // Télécharger le(s) fichier(s) traité(s)
+            if (result.filename) {
+                downloadFile(result.filename);
+            } else if (result.files && result.files.length > 0) {
+                // Plusieurs fichiers (pour split par exemple)
+                result.files.forEach(filename => {
+                    setTimeout(() => downloadFile(filename), 100);
+                });
+            }
+            
+            // Réinitialiser l'interface
+            resetUploadArea();
+            selectedFiles = [];
+            currentTool = null;
+            document.querySelectorAll('.tool-card').forEach(card => card.classList.remove('selected'));
+        }
+    } catch (error) {
+        console.error('Erreur de traitement:', error);
+        showNotification('Erreur lors du traitement: ' + error.message, 'error');
+    }
 }
 
 // Simulation de téléchargement
